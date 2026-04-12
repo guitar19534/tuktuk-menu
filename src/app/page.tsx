@@ -1,65 +1,78 @@
-import Image from "next/image";
+import Link from "next/link";
+import { menuCategories } from "@/lib/menuData";
+import {
+  Utensils, Soup, Beef, Salad, IceCreamBowl, GlassWater, BookOpen,
+} from "lucide-react";
 
-export default function Home() {
+const slugIconMap: Record<string, React.ReactNode> = {
+  appetizer:  <Utensils  size={24} />,
+  maincourse: <Beef      size={24} />,
+  noodle:     <Soup      size={24} />,
+  esarn:      <Salad     size={24} />,
+  dessert:    <IceCreamBowl size={24} />,
+  drink:      <GlassWater  size={24} />,
+  set:        <BookOpen    size={24} />,
+};
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="min-h-screen bg-[#fff8f3]">
+
+      {/* Hero */}
+      <div className="relative bg-[#f47920] pt-16 pb-12 px-6 text-center overflow-hidden">
+        {/* decorative circles */}
+        <div className="absolute -top-10 -right-10 w-48 h-48 bg-white/10 rounded-full" />
+        <div className="absolute -bottom-14 -left-10 w-56 h-56 bg-white/10 rounded-full" />
+
+        <p className="relative text-white/80 text-sm tracking-[0.25em] uppercase mb-2">
+          Welcome to
+        </p>
+        <h1 className="relative text-4xl font-bold text-white drop-shadow-sm leading-tight">
+          Tuk-Tuk
+          <br />Restaurant
+        </h1>
+        <div className="relative mt-3 inline-block bg-white/20 rounded-full px-5 py-1">
+          <p className="text-white text-sm tracking-widest">THAI STREET FOOD</p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </div>
+
+      {/* Wave divider */}
+      <div className="bg-[#f47920]">
+        <svg viewBox="0 0 375 32" className="w-full block" preserveAspectRatio="none" height="32">
+          <path d="M0,0 C120,32 250,0 375,24 L375,32 L0,32 Z" fill="#fff8f3" />
+        </svg>
+      </div>
+
+      {/* Section label */}
+      <div className="px-6 pt-4 pb-2">
+        <p className="text-gray-400 text-sm tracking-widest uppercase">Our Menu</p>
+      </div>
+
+      {/* Category Cards */}
+      <div className="px-4 pb-16 flex flex-col gap-3">
+        {menuCategories.map((cat) => (
+          <Link key={cat.id} href={`/menu/${cat.slug}`} className="block">
+            <div className="flex items-center gap-4 bg-white rounded-2xl px-5 py-4 shadow-sm border border-orange-100 active:scale-[0.98] transition-transform">
+              {/* icon circle */}
+              <div className="w-12 h-12 rounded-xl bg-[#f47920] flex items-center justify-center flex-shrink-0 shadow-md text-white">
+                {slugIconMap[cat.slug]}
+              </div>
+              {/* label */}
+              <div className="flex-1">
+                <p className="text-gray-800 text-lg font-bold leading-tight">
+                  {cat.name}
+                  {cat.subtitle && (
+                    <span className="text-[#f47920]"> ({cat.subtitle})</span>
+                  )}
+                </p>
+              </div>
+              {/* arrow */}
+              <div className="text-[#f47920] opacity-60">›</div>
+            </div>
+          </Link>
+        ))}
+      </div>
+
+    </main>
   );
 }
