@@ -28,7 +28,7 @@ export default async function CategoryPage({ params }: PageProps) {
   if (!cat) notFound();
 
   return (
-    <main className="min-h-screen bg-black overflow-x-hidden">
+    <main className="min-h-screen flex flex-col bg-black overflow-x-hidden">
 
       {/* 1. Back button + ชื่อร้าน */}
       <div className="bg-[#f47920] px-4 pt-10 pb-3 flex items-center gap-3">
@@ -54,6 +54,15 @@ export default async function CategoryPage({ params }: PageProps) {
 
       {/* 3. Carousel รูปเต็มจอ */}
       <ImageCarousel images={cat.carouselImages} categoryName={cat.name} />
+
+      {/* 4. Footer — ดัน content ให้เต็มหน้าจอ */}
+      <div className="flex-1 bg-[#f47920] mt-0 flex flex-col items-center justify-end pb-8 pt-6 min-h-16">
+        <div className="w-12 h-0.5 bg-white/30 rounded-full mb-3" />
+        <p className="text-white/70 text-xs tracking-widest uppercase">
+          Tuk-Tuk Restaurant
+        </p>
+        <p className="text-white/50 text-[10px] mt-1">Thai Street Food · Abu Dhabi</p>
+      </div>
 
     </main>
   );

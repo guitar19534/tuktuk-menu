@@ -11,7 +11,8 @@ interface ImageCarouselProps {
 }
 
 export default function ImageCarousel({ images, categoryName }: ImageCarouselProps) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const hasMultiple = images.length > 1;
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: hasMultiple, active: hasMultiple });
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const onSelect = useCallback(() => {
@@ -50,37 +51,39 @@ export default function ImageCarousel({ images, categoryName }: ImageCarouselPro
         </div>
       </div>
 
-      {/* Left Arrow */}
-      <button
-        onClick={scrollPrev}
-        className="absolute left-3 top-1/2 -translate-y-1/2 bg-[#f47920]/80 hover:bg-[#f47920] text-white rounded-full p-2.5 shadow-lg transition-colors z-10"
-        aria-label="Previous"
-      >
-        <ChevronLeft size={22} />
-      </button>
-
-      {/* Right Arrow */}
-      <button
-        onClick={scrollNext}
-        className="absolute right-3 top-1/2 -translate-y-1/2 bg-[#f47920]/80 hover:bg-[#f47920] text-white rounded-full p-2.5 shadow-lg transition-colors z-10"
-        aria-label="Next"
-      >
-        <ChevronRight size={22} />
-      </button>
-
-      {/* Dots */}
-      <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
-        {images.map((_, i) => (
+      {/* Arrows — แสดงเฉพาะเมื่อมีมากกว่า 1 รูป */}
+      {hasMultiple && (
+        <>
           <button
-            key={i}
-            onClick={() => emblaApi?.scrollTo(i)}
-            className={`h-2 rounded-full transition-all ${
-              i === selectedIndex ? "bg-[#f47920] w-5" : "bg-white/60 w-2"
-            }`}
-            aria-label={`Slide ${i + 1}`}
-          />
-        ))}
-      </div>
+            onClick={scrollPrev}
+            className="absolute left-3 top-1/2 -translate-y-1/2 bg-[#f47920]/80 hover:bg-[#f47920] text-white rounded-full p-2.5 shadow-lg transition-colors z-10"
+            aria-label="Previous"
+          >
+            <ChevronLeft size={22} />
+          </button>
+          <button
+            onClick={scrollNext}
+            className="absolute right-3 top-1/2 -translate-y-1/2 bg-[#f47920]/80 hover:bg-[#f47920] text-white rounded-full p-2.5 shadow-lg transition-colors z-10"
+            aria-label="Next"
+          >
+            <ChevronRight size={22} />
+          </button>
+
+          {/* Dots */}
+          <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
+            {images.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => emblaApi?.scrollTo(i)}
+                className={`h-2 rounded-full transition-all ${
+                  i === selectedIndex ? "bg-[#f47920] w-5" : "bg-white/60 w-2"
+                }`}
+                aria-label={`Slide ${i + 1}`}
+              />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }
