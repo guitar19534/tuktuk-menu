@@ -11,7 +11,6 @@ const chilanka = Chilanka({
 export const metadata: Metadata = {
   title: "Tuk-Tuk Restaurant | Thai Street Food",
   description: "Tuk-Tuk Restaurant – Authentic Thai Street Food Menu",
-  icons: { icon: "/favicon.ico" },
 };
 
 export const viewport: Viewport = {
