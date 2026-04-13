@@ -119,6 +119,7 @@ export const menuCategories: MenuCategory[] = [
     icon: "🍱",
     carouselImages: [
       "/images/single dish meal/1.webp",
+      "/images/single dish meal/2.webp",
     ],
     items: [],
   },
