@@ -1,17 +1,18 @@
 import Link from "next/link";
 import { menuCategories } from "@/lib/menuData";
 import {
-  Utensils, Soup, Beef, Salad, IceCreamBowl, GlassWater, BookOpen,
+  Utensils, Soup, Beef, Salad, IceCreamBowl, GlassWater, BookOpen, UtensilsCrossed,
 } from "lucide-react";
 
 const slugIconMap: Record<string, React.ReactNode> = {
-  appetizer:  <Utensils  size={24} />,
-  maincourse: <Beef      size={24} />,
-  noodle:     <Soup      size={24} />,
-  esarn:      <Salad     size={24} />,
-  dessert:    <IceCreamBowl size={24} />,
-  drink:      <GlassWater  size={24} />,
-  set:        <BookOpen    size={24} />,
+  appetizer:         <Utensils        size={24} />,
+  maincourse:        <Beef            size={24} />,
+  noodle:            <Soup            size={24} />,
+  esarn:             <Salad           size={24} />,
+  "single-dish-meal":<UtensilsCrossed size={24} />,
+  set:               <BookOpen        size={24} />,
+  dessert:           <IceCreamBowl    size={24} />,
+  drink:             <GlassWater      size={24} />,
 };
 
 export default function HomePage() {

@@ -32,7 +32,6 @@ export const menuCategories: MenuCategory[] = [
     carouselImages: [
       "/images/appetizer/1.webp",
       "/images/appetizer/2.webp",
-      "/images/appetizer/3.webp",
     ],
     items: [
       { id: "a1", nameTh: "ปอเปี๊ยะทอด", nameEn: "Spring Rolls", description: "Chicken or Vegetable Spring rolls", price: 27 },
@@ -57,8 +56,6 @@ export const menuCategories: MenuCategory[] = [
       "/images/maincourse/4.webp",
       "/images/maincourse/5.webp",
       "/images/maincourse/6.webp",
-      "/images/maincourse/7.webp",
-      "/images/maincourse/8.webp",
     ],
     items: [
       { id: "m1", nameTh: "ผัดไทย", nameEn: "Pad Thai", price: 65 },
@@ -81,6 +78,7 @@ export const menuCategories: MenuCategory[] = [
     carouselImages: [
       "/images/noodle/1.webp",
       "/images/noodle/2.webp",
+      "/images/noodle/3.webp",
     ],
     items: [
       { id: "n1", nameTh: "ก๋วยเตี๋ยวเรือ", nameEn: "Boat Noodle", price: 55 },
@@ -114,6 +112,33 @@ export const menuCategories: MenuCategory[] = [
     ],
   },
   {
+    id: "single-dish-meal",
+    slug: "single-dish-meal",
+    name: "Single Dish Meal",
+    nameTh: "อาหารจานเดียว",
+    icon: "🍱",
+    carouselImages: [
+      "/images/single dish meal/1.webp",
+    ],
+    items: [],
+  },
+  {
+    id: "set",
+    slug: "set",
+    name: "Set Menu",
+    nameTh: "เซ็ตเมนู",
+    icon: "📋",
+    carouselImages: [
+      "/images/set/1.webp",
+    ],
+    items: [
+      { id: "s1", nameTh: "เซ็ต A", nameEn: "Set A – Pad Thai + Drink", price: 90 },
+      { id: "s2", nameTh: "เซ็ต B", nameEn: "Set B – Green Curry + Rice + Drink", price: 105 },
+      { id: "s3", nameTh: "เซ็ต C", nameEn: "Set C – Basil Stir-fry + Rice + Drink", price: 95 },
+      { id: "s4", nameTh: "เซ็ตครอบครัว", nameEn: "Family Set (4 persons)", price: 350 },
+    ],
+  },
+  {
     id: "dessert",
     slug: "dessert",
     name: "Dessert",
@@ -139,6 +164,7 @@ export const menuCategories: MenuCategory[] = [
     carouselImages: [
       "/images/drink/1.webp",
       "/images/drink/2.webp",
+      "/images/drink/3.webp",
     ],
     items: [
       { id: "dr1", nameTh: "ชาไทย", nameEn: "Thai Iced Tea", price: 35 },
@@ -147,22 +173,6 @@ export const menuCategories: MenuCategory[] = [
       { id: "dr4", nameTh: "น้ำมะพร้าว", nameEn: "Coconut Water", price: 40 },
       { id: "dr5", nameTh: "น้ำโซดา", nameEn: "Sparkling Water", price: 25 },
       { id: "dr6", nameTh: "น้ำอัดลม", nameEn: "Soft Drinks", price: 25 },
-    ],
-  },
-  {
-    id: "set",
-    slug: "set",
-    name: "Set Menu",
-    nameTh: "เซ็ตเมนู",
-    icon: "📋",
-    carouselImages: [
-      "/images/set/1.webp",
-    ],
-    items: [
-      { id: "s1", nameTh: "เซ็ต A", nameEn: "Set A – Pad Thai + Drink", price: 90 },
-      { id: "s2", nameTh: "เซ็ต B", nameEn: "Set B – Green Curry + Rice + Drink", price: 105 },
-      { id: "s3", nameTh: "เซ็ต C", nameEn: "Set C – Basil Stir-fry + Rice + Drink", price: 95 },
-      { id: "s4", nameTh: "เซ็ตครอบครัว", nameEn: "Family Set (4 persons)", price: 350 },
     ],
   },
 ];
